@@ -1,18 +1,17 @@
-<template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js + TypeScript App"/>
-  </div>
-</template>
-
-<script lang="ts">
-import { Options, Vue } from 'vue-class-component';
-import HelloWorld from '@/components/HelloWorld.vue'; // @ is an alias to /src
-
-@Options({
-  components: {
-    HelloWorld,
-  },
-})
-export default class HomeView extends Vue {}
+<script lang="ts" setup>
+import { Decoration1, Decoration2 } from "@kjgl77/datav-vue3";
 </script>
+<template>
+  <!-- 引入之后就可以在vue的template中直接使用 -->
+  <decoration-1
+    :color="['pink', 'yellow']"
+    style="width: 200px; height: 50px"
+  />
+  <decoration-2 :reverse="true" style="width: 5px; height: 150px" />
+  <dv-border-box-1 class="container" :color="['red']"> </dv-border-box-1>
+</template>
+<style>
+.container {
+  height: 100px;
+}
+</style>
