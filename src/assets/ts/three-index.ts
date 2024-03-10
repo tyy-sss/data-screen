@@ -1,84 +1,56 @@
 import * as THREE from "three";
+// 导入轨道控制器，对物体进行操作
+import { OrbitControls } from "three/addons/controls/OrbitControls.js";
 
-export default class ThreeJs {
-  scene: THREE.Scene | null = null;
-  camera: THREE.PerspectiveCamera | null = null;
-  renderer: THREE.WebGLRenderer | null = null;
-  ambientLight: THREE.AmbientLight | null = null;
-  mesh: THREE.Mesh | null = null;
+export const init = () => {
+  // 第一步新建一个场景
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(
+    75, // 视角 越大，看到的东西越多
+    window.innerWidth / window.innerHeight, // 宽高比
+    0.1, // 近平面
+    1000 // 远平面
+  );
+  camera.position.z = 5;
+  camera.position.y = 1;
+  camera.position.x = 1;
 
-  constructor() {
-    this.init();
-  }
+  // 添加世界坐标辅助器
+  const axesHelper = new THREE.AxesHelper(5);
+  scene?.add(axesHelper);
 
-  init(): void {
-    // 第一步新建一个场景
-    this.scene = new THREE.Scene();
-    // 创建相机
-    this.setCamera();
-    // 创建渲染器
-    this.setRenderer();
-    // 创建物体
-    this.setCube();
-    // 动画
-    // this.animate();
-    this.render();
-  }
+  const renderer = new THREE.WebGLRenderer();
+  // 设置画布的大小
+  renderer.setSize(window.innerWidth, window.innerHeight);
+  //这里 其实就是canvas 画布  renderer.domElement
+  document.body.appendChild(renderer.domElement);
 
-  // 新建透视相机
-  setCamera(): void {
-    // 第二参数就是 长度和宽度比 默认采用浏览器  返回以像素为单位的窗口的内部宽度和高度
-    this.camera = new THREE.PerspectiveCamera(
-      75, // 视角 越大，看到的东西越多
-      window.innerWidth / window.innerHeight, // 宽高比
-      0.1, // 近平面
-      1000 // 远平面
-    );
-    this.camera.position.z = 5;
-  }
+  // 添加轨道控制器
+  let controls = new OrbitControls(camera, renderer.domElement);
+  // 设置带阻尼的惯性
+  controls.enableDamping = true;
 
-  // 设置渲染器
-  setRenderer(): void {
-    this.renderer = new THREE.WebGLRenderer();
-    // 设置画布的大小
-    this.renderer.setSize(window.innerWidth, window.innerHeight);
-    //这里 其实就是canvas 画布  renderer.domElement
-    document.body.appendChild(this.renderer.domElement);
-  }
+  const geometry = new THREE.BoxGeometry(); //创建一个立方体几何对象Geometry
+  const material = new THREE.MeshBasicMaterial({ color: 0xff3200 }); //材质对象Material
+  const mesh = new THREE.Mesh(geometry, material); //网格模型对象Mesh
+  scene.add(mesh); //网格模型添加到场景中
 
-  // 设置环境光
-  setLight(): void {
-    if (this.scene) {
-      this.ambientLight = new THREE.AmbientLight(0xffffff); // 环境光
-      this.scene.add(this.ambientLight);
+  mesh.position.set(2,0,0);
+  mesh.scale.set(0.2,0.2,0.2);
+
+  const render = () => {
+    if (renderer && scene && camera) {
+      renderer.render(scene, camera);
     }
-  }
+  };
 
-  // 创建网格模型
-  setCube(): void {
-    if (this.scene) {
-      const geometry = new THREE.BoxGeometry(); //创建一个立方体几何对象Geometry
-      const material = new THREE.MeshBasicMaterial({ color: 0xff3200 }); //材质对象Material
-      this.mesh = new THREE.Mesh(geometry, material); //网格模型对象Mesh
-      this.scene.add(this.mesh); //网格模型添加到场景中
-      this.render();
-    }
-  }
+  const animate = () => {
+    controls.update();
+    requestAnimationFrame(animate.bind(this));
+    // mesh.rotation.x += 0.01;
+    // mesh.rotation.y += 0.01;
+    render();
+  };
 
-  // 渲染
-  render(): void {
-    if (this.renderer && this.scene && this.camera) {
-      this.renderer.render(this.scene, this.camera);
-    }
-  }
-
-  // 动画
-  animate(): void {
-    if (this.mesh) {
-      requestAnimationFrame(this.animate.bind(this));
-      this.mesh.rotation.x += 0.01;
-      this.mesh.rotation.y += 0.01;
-      this.render();
-    }
-  }
-}
+  animate();
+};
