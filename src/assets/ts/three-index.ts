@@ -1,5 +1,4 @@
 import * as THREE from "three";
-const logo = require("@/assets/logo.png");
 
 export default class ThreeJs {
   scene: THREE.Scene | null = null;
@@ -15,20 +14,25 @@ export default class ThreeJs {
   init(): void {
     // 第一步新建一个场景
     this.scene = new THREE.Scene();
+    // 创建相机
     this.setCamera();
+    // 创建渲染器
     this.setRenderer();
+    // 创建物体
     this.setCube();
-    this.animate();
+    // 动画
+    // this.animate();
+    this.render();
   }
 
   // 新建透视相机
   setCamera(): void {
     // 第二参数就是 长度和宽度比 默认采用浏览器  返回以像素为单位的窗口的内部宽度和高度
     this.camera = new THREE.PerspectiveCamera(
-      75,
-      window.innerWidth / window.innerHeight,
-      0.1,
-      1000
+      75, // 视角 越大，看到的东西越多
+      window.innerWidth / window.innerHeight, // 宽高比
+      0.1, // 近平面
+      1000 // 远平面
     );
     this.camera.position.z = 5;
   }
@@ -54,9 +58,7 @@ export default class ThreeJs {
   setCube(): void {
     if (this.scene) {
       const geometry = new THREE.BoxGeometry(); //创建一个立方体几何对象Geometry
-      // const material = new THREE.MeshBasicMaterial({ color: 0xff3200 }); //材质对象Material
-      const texture = new THREE.TextureLoader().load(logo); //首先，获取到纹理
-      const material = new THREE.MeshBasicMaterial({ map: texture }); //然后创建一个phong材质来处理着色，并传递给纹理映射
+      const material = new THREE.MeshBasicMaterial({ color: 0xff3200 }); //材质对象Material
       this.mesh = new THREE.Mesh(geometry, material); //网格模型对象Mesh
       this.scene.add(this.mesh); //网格模型添加到场景中
       this.render();
