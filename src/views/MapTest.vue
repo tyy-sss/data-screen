@@ -1,7 +1,5 @@
 <template>
-  <div>
     <canvas id="three"></canvas>
-  </div>
 </template>
 <script lang='ts' setup>
 import { onMounted } from 'vue'

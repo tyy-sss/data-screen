@@ -1,14 +1,12 @@
 <template>
   <div id="app">
-    <router-view/>
+    <router-view />
   </div>
 </template>
-<script setup lang="ts">
-</script>
 <style lang="less">
+*,
 html,
-body,
-#app {
+body {
   padding: 0;
   margin: 0;
   cursor: pointer;
