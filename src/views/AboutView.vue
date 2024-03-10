@@ -9,8 +9,8 @@
     <div class="container-pro">
       <div class="region" v-for="i in 4" :key="i"><dv-border-box-7 :color="['rgba(41,148,187,0.4)']">
           <dv-decoration-11 class="pro-information" :color="['rgba(41,148,187,0.1)']"
-            style="width:150px;height:50px; font-size: 14px;">赛题信息</dv-decoration-11>
-          <dv-decoration-9 class="pro-view-logo" style="width:100px;height:100px;">赛题{{ i }}</dv-decoration-9>
+            style="width:9.375rem;height:3.125rem; font-size: 0.875rem;">赛题信息</dv-decoration-11>
+          <dv-decoration-9 class="pro-view-logo" style="width:6.25rem;height:6.25rem;">赛题{{ i }}</dv-decoration-9>
           <dv-capsule-chart class="center" :config="{
       data: [
         {
@@ -24,38 +24,51 @@
         {
           name: '漯河',
           value: 98
-        },
-        {
-          name: '郑州',
-          value: 75
-        },
-        {
-          name: '西峡',
-          value: 66
-        },
+        }
       ],
       colors: ['#e062ae', '#fb7293', '#e690d1', '#32c5e9', '#96bfff'],
       unit: '单位',
       showValue: true
-    }" style="width:250px;height:200px" />
-    <dv-scroll-board class="center" :config="{  header: ['列1', '列2', '列3'],
-  data: [
-    ['行1列1', '行1列2', '行1列3'],
-    ['行2列1', '行2列2', '行2列3'],
-    ['行3列1', '行3列2', '行3列3'],
-    ['行4列1', '行4列2', '行4列3'],
-    ['行5列1', '行5列2', '行5列3'],
-    ['行6列1', '行6列2', '行6列3'],
-    ['行7列1', '行7列2', '行7列3'],
-    ['行8列1', '行8列2', '行8列3'],
-    ['行9列1', '行9列2', '行9列3'],
-    ['行10列1', '行10列2', '行10列3']
-  ]}" style="width:300px;height:220px" />
-  <div class="ask-min flex">
-    <dv-water-level-pond class="time-view" :config="{data:[55],shape:'round'}" style="width:100px;height:100px" />
-    <dv-water-level-pond class="score-view" :config="{data:[55],shape:'round'}" style="width:100px;height:100px" />
+    }" style="width:17rem;height:13rem" />
+            <table class="score-table">
+            <tr>
+              <th>答题</th>
+              <th>队伍</th>
+              <th>时间</th> 
+              <th>得分</th>
 
-  </div>
+            </tr>
+            <tr v-for="i in 3" :key="i">
+              <td class="yellow-flag">第一血</td>
+              <td>队伍20</td>
+              <td>6-21 12:22:00</td>
+              <td>1234</td>
+
+
+            </tr>
+
+
+          </table>
+          <div class="ask-min flex">
+            <div class="avg-frame"> 
+              <dv-water-level-pond class="time-view" :config="{ data: [55], shape: 'round' }"
+              style="width:6rem;height:6rem" />
+              <div class="text-avg">
+                平均攻破时长
+              </div>
+            </div>
+           <div class="avg-frame">
+                <dv-water-level-pond class="score-view" :config="{ data: [55], shape: 'round' }"
+              style="width:6rem;height:6rem" />
+              <div class="text-avg">
+                最后一次得分
+              </div>
+
+
+           </div>
+        
+
+          </div>
         </dv-border-box-7></div>
 
 
@@ -67,27 +80,67 @@
 </template>
 
 <style scoped lang="less">
-.time-view, .score-view{
-  margin-top:40px;
-  margin-left: 40px;
+
+.text-avg{
+  color: rgb(38,148,187);
+  font-weight: 800;
+  margin-top: 1rem;
+  margin-left: 2rem;
+}
+.yellow-flag{
+  color: yellow;
+}
+.red-flag{
+  color: red;
+}
+.white-flag{
+  color: white;
 }
 
-.flex{
-  display: flex;
-}
-.center{
-
+.score-table{
   margin: 0 auto;
+
+  color: white;
+  width: 20rem;
+
+  td {
+    text-align: center;
+    padding: 0.3rem;
+  }
+
+  th {
+    color: rgb(50,197,233);
+    text-align: center;
+    padding: 0.6rem;
+  }
 }
+.time-view,
+.score-view {
+  margin-top: 2.5rem;
+  margin-left: 2rem;
+  margin-right: 2rem;
+}
+
+.flex {
+  display: flex;
+  justify-content: space-between;
+}
+
+.center {
+
+  margin: 1rem auto;
+}
+
 .pro-view-logo {
   color: white;
-  margin: 20px auto;
+  margin: 1.5rem auto;
 }
 
 .pro-information {
   color: white;
-  margin: 0 auto;
-  margin-top: 10px;
+  margin: 1rem auto;
+  margin-bottom: 2rem;
+
 }
 
 .container-pro {
@@ -95,10 +148,10 @@
 }
 
 .region {
-  width: 333px;
-  height: 800px;
-  margin-left: 20px;
-  margin-top: 70px;
+  width: 20.8125rem;
+  height: 50rem;
+  margin-left: 1.25rem;
+  margin-top: 4.375rem;
   ;
 }
 

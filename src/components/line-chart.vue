@@ -64,8 +64,8 @@ onMounted(()=>{
 <style scoped lang="less">
 
 #score-rank{
-   height: 250px;
-   width: 450px;
+   height: 280px;
+   width: 470px;
    margin: 0 auto;
 }
 

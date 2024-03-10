@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { onMounted } from 'vue'
+
 import { BorderBox11 as DvBorderBox11, BorderBox7 as DvBorderBox7 } from '@kjgl77/datav-vue3'
 
 
@@ -15,13 +15,13 @@ import { BorderBox11 as DvBorderBox11, BorderBox7 as DvBorderBox7 } from '@kjgl7
           src="https://tse3-mm.cn.bing.net/th/id/OIP-C.oC9ZmasIzoCw0Bo2cpmsgAHaNK?w=115&h=187&c=7&r=0&o=5&dpr=2&pid=1.7">
         <div class="i-name">队伍20</div>
       </div>
-      <dv-percent-pond :config="{ value: 66 }" style="width:150px;height:50px;margin-right: 20px;" />
+      <dv-percent-pond :config="{ value: 66 }" style="width:9.375rem;height:3.125rem;margin-right: 1.25rem;" />
 
     </div>
     <div class="region-frame">
       <div class="left-frame">
         <div class="first region"><dv-border-box-7 :color="['rgba(41,148,187,0.4)']">
-            <dv-decoration-7 class="broadcast-frame" style="width:100px;height:30px;">公告栏</dv-decoration-7>
+            <dv-decoration-7 class="broadcast-frame" style="width:6.25rem;height:1.875rem;">公告栏</dv-decoration-7>
             <div class="announcement">
               <div class="li-an">这是一条公告~</div>
             </div>
@@ -29,11 +29,18 @@ import { BorderBox11 as DvBorderBox11, BorderBox7 as DvBorderBox7 } from '@kjgl7
 
           </dv-border-box-7></div>
         <div class="second region"><dv-border-box-7 :color="['rgba(41,148,187,0.4)']">
-            <dv-decoration-7 class="broadcast-frame" style="width:150px;height:30px;">RW排队列表</dv-decoration-7>
+            <dv-decoration-7 class="broadcast-frame" style="width:9.375rem;height: 1.875rem;;">RW排队列表</dv-decoration-7>
             <div class="pro-heat-frame">
               <div class="pro-outer" v-for="i in 10" :key="i"> <dv-water-level-pond class="score-view"
-                  :config="{ data: [55], shape: 'round' }" style="width:100px;height:100px" />
-                <dv-border-box-8 class="pro-getScore" style="width:140px;height:80px;"></dv-border-box-8>
+                  :config="{ data: [55], shape: 'round' }" style="width:6.25rem;height:6.25rem" />
+                <dv-border-box-8 class="pro-getScore" style="width:8.75rem;height:5rem;">
+          
+                  <div class="i white-flag">
+                    {{ i }}
+                  </div>
+                  <div class="pro-heat red-flag">热度值：50%</div>
+                
+                </dv-border-box-8>
               </div>
             </div>
 
@@ -46,7 +53,7 @@ import { BorderBox11 as DvBorderBox11, BorderBox7 as DvBorderBox7 } from '@kjgl7
       <div class="right-frame">
 
         <div class="third region"><dv-border-box-7 :color="['rgba(41,148,187,0.4)']">
-            <dv-decoration-7 class="broadcast-frame score-information" style="width:120px;height:30px;">分值信息</dv-decoration-7>
+            <dv-decoration-7 class="broadcast-frame score-information" style="width:7.5rem;height:1.875rem;">分值信息</dv-decoration-7>
             <table class="score-table">
               <tr>
                 <th>总分</th>
@@ -69,7 +76,7 @@ import { BorderBox11 as DvBorderBox11, BorderBox7 as DvBorderBox7 } from '@kjgl7
 
           </dv-border-box-7></div>
         <div class="fourth region"><dv-border-box-7 :color="['rgba(41,148,187,0.4)']">
-            <dv-decoration-7 class="broadcast-frame" style="width:100px;height:30px;">积分榜</dv-decoration-7>
+            <dv-decoration-7 class="broadcast-frame" style="width:6.25rem;height:1.875rem;">积分榜</dv-decoration-7>
             <dv-scroll-ranking-board :config="{
       data: [
         {
@@ -101,12 +108,12 @@ import { BorderBox11 as DvBorderBox11, BorderBox7 as DvBorderBox7 } from '@kjgl7
           value: 29
         }
       ]
-    }" style="width:450px;height:280px;margin: 0 auto;" />
+    }" style="width:28.125rem;height:17.5rem;margin: 0 auto;" />
 
 
           </dv-border-box-7></div>
         <div class="fifth region"><dv-border-box-7 :color="['rgba(41,148,187,0.4)']">
-            <dv-decoration-7 class="broadcast-frame" style="width:120px;height:30px;">实时信息</dv-decoration-7>
+            <dv-decoration-7 class="broadcast-frame" style="width:7.5rem;height:1.875rem;">实时信息</dv-decoration-7>
             <div class="concrete-information"><span class="white-flag">6 -25 12:19:22</span><span class="yellow-flag"> 队伍7 </span><span class="red-flag">攻击了</span><span>2 </span><span class="white-flag">题目的答案</span></div>
 
 
@@ -125,8 +132,16 @@ import { BorderBox11 as DvBorderBox11, BorderBox7 as DvBorderBox7 } from '@kjgl7
 </template>
 
 <style lang="less" scoped>
+.pro-getScore{
+  box-sizing: border-box;
+  padding: 1rem;
+}
+.i{
+  margin-left: 2.5rem;
+  margin-bottom: 0.2rem;
+}
 .concrete-information{
-  margin-left: 20px;
+  margin-left: 1.25rem;
 }
 .yellow-flag{
   color: yellow;
@@ -140,31 +155,34 @@ import { BorderBox11 as DvBorderBox11, BorderBox7 as DvBorderBox7 } from '@kjgl7
 
 .score-table{
   color: white;
-	border: 1px solid white;
+	border: 0.0625rem solid white;
   border-collapse:collapse;
   margin: 0 auto;
  
   th,td{
-	border: 1px solid white;
-  padding: 10px;
+	border: 0.0625rem solid white;
+  padding: 0.625rem;
   }
 		
 }
 .li-an {
   color: red;
-  margin-left: 10px;
-  font-size: 14px;
+  margin-left: 0.625rem;
+  font-size: 0.875rem;
 }
 
 .pro-outer {
 
-  width: 150px;
-  height: 200px;
+  width: 9.375rem;
+  height: 13rem;
+
 
 
 }
 
 .pro-heat-frame {
+  margin: 0 auto;
+  width: 50rem;
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
@@ -172,12 +190,12 @@ import { BorderBox11 as DvBorderBox11, BorderBox7 as DvBorderBox7 } from '@kjgl7
 
 .broadcast-frame {
   color: white;
-  margin-top: 5px;
-  margin-left: 10px;
-  margin-bottom: 25px;
+  margin-top: 0.3125rem;
+  margin-left: 0.625rem;
+  margin-bottom: 1.5625rem;
 }
 .score-information{
-  margin-bottom: 15px;
+  margin-bottom: 0.9375rem;
 
 }
 
@@ -192,17 +210,17 @@ import { BorderBox11 as DvBorderBox11, BorderBox7 as DvBorderBox7 } from '@kjgl7
 .logo-team-compare {
 
   font-weight: 70;
-  margin-top: 50px;
-  margin-left: 25px;
-  margin-bottom: 15px;
-  font-size: 18px;
+  margin-top: 3.125rem;
+  margin-left: 1.5625rem;
+  margin-bottom: 0.9375rem;
+  font-size: 1.125rem;
   display: flex;
   justify-content: space-between;
 }
 
 .team-logo {
-  width: 50px;
-  height: 50px;
+  width: 3.125rem;
+  height: 3.125rem;
 
 }
 
@@ -213,15 +231,15 @@ import { BorderBox11 as DvBorderBox11, BorderBox7 as DvBorderBox7 } from '@kjgl7
 
 .frame-container {
   display: flex;
-  margin-top: 70px;
+  margin-top: 4.375rem;
 }
 
 .container {
-  height: 100px;
+  height: 6.25rem;
 }
 
 .score-view {
-  margin: 10px auto;
+  margin: 0.625rem auto;
 }
 
 .border-frame {
@@ -231,39 +249,39 @@ import { BorderBox11 as DvBorderBox11, BorderBox7 as DvBorderBox7 } from '@kjgl7
 }
 
 .first {
-  width: 860px;
-  height: 250px;
-  margin-left: 25px;
+  width: 53.75rem;
+  height: 15.625rem;
+  margin-left: 1.5625rem;
 
 }
 
 .third {
-  width: 520px;
-  height: 150px;
-  margin-left: 10px;
+  width: 32.5rem;
+  height: 9.375rem;
+  margin-left: 0.625rem;
 
 }
 
 .fourth {
-  width: 520px;
-  height: 350px;
-  margin-left: 10px;
-  margin-top: 10px;
+  width: 32.5rem;
+  height: 21.875rem;
+  margin-left: 0.625rem;
+  margin-top: 0.625rem;
 
 }
 
 .fifth {
-  width: 520px;
-  height: 240px;
-  margin-left: 10px;
-  margin-top: 10px;
+  width: 32.5rem;
+  height: 25rem;
+  margin-left: 0.625rem;
+  margin-top: 0.625rem;
 
 }
 
 .second {
-  width: 860px;
-  height: 500px;
-  margin-left: 25px;
-  margin-top: 10px;
+  width: 53.75rem;
+  height: 31.25rem;
+  margin-left: 1.5625rem;
+  margin-top: 0.625rem;
 }
 </style>
