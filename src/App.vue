@@ -12,7 +12,7 @@ body {
   cursor: pointer;
 }
 body{
-  background: black;
+  background: rgb(0, 0, 0);
 
 }
 * {
