@@ -4,16 +4,15 @@
   </div>
 </template>
 <style lang="less">
-*,
 html,
-body {
+body,
+#app {
   padding: 0;
   margin: 0;
   cursor: pointer;
 }
 body{
-  background: rgb(0, 0, 0);
-
+  background: black;
 }
 * {
   /* 滑动时报错 */

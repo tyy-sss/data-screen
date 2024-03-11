@@ -23,9 +23,9 @@ const routes: Array<RouteRecordRaw> = [
     component: () => import("../views/MapTest.vue"),
   },
   {
-    path: '/compare',
-    name: 'compare',
-    component: () => import( '../views/CompareView.vue')
+    path: "/compare",
+    name: "compare",
+    component: () => import("../views/CompareView.vue"),
   },
 ];
 
